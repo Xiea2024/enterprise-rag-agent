@@ -1,0 +1,18 @@
+[project]
+name = "enterprise-rag-agent"
+version = "0.1.0"
+description="Enterprise-oriented RAG and AI Agent backend"
+readme="README.md"
+requires-python=">=3.12"
+
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic-settings",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+]
