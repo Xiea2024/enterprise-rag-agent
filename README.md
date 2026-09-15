@@ -2,9 +2,7 @@
 
 An enterprise-oriented RAG and AI Agent backend built with Python and FastAPI.
 
-The project aims to provide document ingestion, retrieval-augmented
-generation, source-grounded question answering and extensible agent
-orchestration.
+The project aims to provide document ingestion, retrieval-augmented generation, source-grounded question answering and extensible agent orchestration.
 
 ## Status
 

@@ -9,6 +9,8 @@ dependencies = [
     "fastapi",
     "uvicorn[standard]",
     "pydantic-settings",
+    "python-multipart>=0.0.32",
+    "aiofiles>=25.1.0",
 ]
 
 [dependency-groups]

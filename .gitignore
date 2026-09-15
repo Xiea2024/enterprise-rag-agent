@@ -25,3 +25,5 @@ venv/
 # Build
 dist/
 build/
+
+data/
