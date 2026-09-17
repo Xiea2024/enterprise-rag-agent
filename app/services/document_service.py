@@ -42,7 +42,7 @@ class DocumentService:
         
         document_id = str(uuid4())
         
-        await self.storage.save(
+        storage_path = await self.storage.save(
             document_id=document_id,
             file=file
         )
@@ -51,7 +51,8 @@ class DocumentService:
             id=document_id,
             filename=filename,
             content_type=file.content_type,
-            status=DocumentStatus.UPLOADED
+            status=DocumentStatus.UPLOADED,
+            storage_path=str(storage_path),
         )
         return self.repository.save(document)
     

@@ -14,3 +14,4 @@ class DocumentResponse(BaseModel):
     filename:str
     content_type:str|None
     status:DocumentStatus
+    storage_path:str|None = None
