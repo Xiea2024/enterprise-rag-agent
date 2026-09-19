@@ -16,6 +16,13 @@ class Settings(BaseSettings):
         extra="ignore"
     )
     
+    embedding_model:str = (
+        "sentence-transformers/all-MiniLM-L6-v2"
+    )
+    
+    qdrant_url:str = "http://localhost:6333"
+    qdrant_collection:str ="enterprise_documents"
+    
 @lru_cache
 def get_settings()->Settings:
     return Settings()

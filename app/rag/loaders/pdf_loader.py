@@ -4,7 +4,7 @@ from app.rag.models import DocumentPage
 
 class PDFLoader:
     
-    def Load(
+    def load(
         self,
         file_path:Path,
     )->list[DocumentPage]:
