@@ -9,7 +9,7 @@ from app.infrastructure.vectorstore.base import(
     VectorStore,
 )
 
-from app.rag.models import Chunk
+from app.rag.models import Chunk, RetrievalResult
 
 class QdrantVectorStore(VectorStore):
     
@@ -80,3 +80,44 @@ class QdrantVectorStore(VectorStore):
             collection_name=self.collection_name,
             points=points,
         )
+    
+    def search(
+        self, 
+        query_vector: list[float], 
+        top_k: int = 5)->list[RetrievalResult]:
+        
+        response = self.client.query_points(
+            collection_name=self.collection_name,
+            query=query_vector,
+            limit = top_k,
+            with_payload=True,
+        )
+        results:list[RetrievalResult] = []
+        
+        for point in response.points:
+            payload = point.payload or {}
+            
+            chunk = Chunk(
+                id=str(point.id),
+                document_id=str(
+                    payload.get("document_id","")
+                ),
+                chunk_index=int(
+                    payload.get("chunk_index",0)
+                ),
+                text=str(
+                    payload.get("text","")
+                ),
+                page_number=payload.get("page_number",""),
+                metadata=payload.get(
+                    "metadata",
+                    {},
+                )
+            )
+            results.append(
+                RetrievalResult(
+                    chunk=chunk,
+                    score=point.score,
+                )
+            )
+        return results

@@ -15,3 +15,7 @@ class Chunk(BaseModel):
     page_number:int |None = None
     
     metadata: dict[str,str] = Field(default_factory=dict)
+    
+class RetrievalResult(BaseModel):
+    chunk:Chunk
+    score:float

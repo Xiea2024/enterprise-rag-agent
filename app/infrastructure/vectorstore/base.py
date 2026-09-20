@@ -1,6 +1,9 @@
 from abc import ABC,abstractmethod
 
-from app.rag.models import Chunk
+from app.rag.models import(
+    Chunk,
+    RetrievalResult,
+)
 
 class VectorStore(ABC):
     
@@ -10,4 +13,12 @@ class VectorStore(ABC):
         chunks:list[Chunk],
         vectors:list[list[float]],
     )->None:
+        pass
+    
+    @abstractmethod
+    def search(
+        self,
+        query_vector:list[float],
+        top_k:int=5,
+    )->list[RetrievalResult]:
         pass
