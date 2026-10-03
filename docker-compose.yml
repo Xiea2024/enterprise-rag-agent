@@ -1,6 +1,6 @@
 services:
   qdrant:
-    image: qdrant/qdrant:latest
+    image: m.daocloud.io/docker.io/qdrant/qdrant:latest
     ports:
       - "6333:6333"
     volumes:
